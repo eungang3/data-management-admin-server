@@ -34,4 +34,25 @@ const checkAccount = async (req, res) => {
   }
 };
 
-module.exports = { createUser, checkAccount };
+const login = async (req, res) => {
+  const { account, password } = req.body;
+
+  if (!account) {
+    const error = new Error("아이디를 입력해 주세요.");
+    error.statusCode = 400;
+    throw error;
+  } else if (!password) {
+    const error = new Error("비밀번호를 입력해 주세요.");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const token = await userService.login(account, password);
+  res.status(200).json({ data: token });
+};
+
+const test = async (req, res) => {
+  res.json({ message: req.user });
+};
+
+module.exports = { createUser, checkAccount, login };

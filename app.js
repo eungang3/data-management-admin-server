@@ -4,6 +4,7 @@ require("express-async-errors");
 const router = require("./routes");
 const morgan = require("morgan");
 const cors = require("cors");
+const errorHandler = require("./middlewares/errorHandler");
 const myDataSource = require("./models/db.config");
 
 // DB 연결
@@ -22,6 +23,7 @@ const createApp = () => {
   app.use(morgan("dev"));
   app.use(cors());
   app.use(router);
+  app.use(errorHandler);
 
   return app;
 };
