@@ -11,7 +11,7 @@ const createUser = async (name, account, hashedPw, phoneNumber, regionId, role) 
 
 const getUserAccount = async (account) => {
   const [user] = await myDataSource.query(
-    `SELECT id, account, password 
+    `SELECT id, account, password, role, region_id 
     FROM users 
     WHERE account = ?`,
     [account]
