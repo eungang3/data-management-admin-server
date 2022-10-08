@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config --runInBand --detectOpenHandles --forceExit"
+    "test": "echo \"DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config --runInBand --detectOpenHandles --forceExit",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
