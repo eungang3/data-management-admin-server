@@ -29,7 +29,7 @@ CREATE TABLE `centers` (
   PRIMARY KEY (`id`),
   KEY `region_id` (`region_id`),
   CONSTRAINT `centers_ibfk_1` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=316 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping routines for database 'haii'
+-- Dumping routines for database 'management'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -105,5 +105,6 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20221007141421'),
   ('20221007141427'),
   ('20221007142206'),
-  ('20221007142220');
+  ('20221007142220'),
+  ('20221008170619');
 UNLOCK TABLES;

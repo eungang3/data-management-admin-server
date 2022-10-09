@@ -3,10 +3,10 @@ const userService = require("../services/user");
 const createUser = async (req, res) => {
   const { name, account, password, phoneNumber, regionId, role } = req.body;
 
-  if (!(name && account && password && phoneNumber && regionId && role)) {
-    res.status(400).json({ error: "필수 항목이 입력되지 않았습니다." });
-    return;
-  }
+  // if (!(name && account && password && phoneNumber && regionId && role)) {
+  //   res.status(400).json({ error: "필수 항목이 입력되지 않았습니다." });
+  //   return;
+  // }
 
   try {
     await userService.createUser(name, account, password, phoneNumber, regionId, role);
@@ -36,6 +36,7 @@ const checkAccount = async (req, res) => {
 
 const login = async (req, res) => {
   const { account, password } = req.body;
+  console.log(req.body);
 
   if (!account) {
     const error = new Error("아이디를 입력해 주세요.");
