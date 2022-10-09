@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
 
 const centerInsert = async (req, res) => {
-    const { token } = req.body
+    const { token } = req.headers
     const key = process.env.SECRET_KEY
     const token_id = jwt.verify(token, key)
     const role = token_id.role
