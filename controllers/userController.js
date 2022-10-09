@@ -1,4 +1,4 @@
-const userService = require("../services/user");
+const userService = require("../services/userService");
 
 const createUser = async (req, res) => {
   const { name, account, password, phoneNumber, regionId, role } = req.body;
@@ -57,26 +57,25 @@ const test = async (req, res) => {
 };
 
 const updateUserController = async (req, res) => {
-  try{
-    const userDto = {...req.body, headers: req.headers.authorization};
+  try {
+    const userDto = { ...req.body, headers: req.headers.authorization };
 
-    if(!userDto.account){
-      const error = new Error('수정할 회원의 아이디를 선택해 주세요.');
+    if (!userDto.account) {
+      const error = new Error("수정할 회원의 아이디를 선택해 주세요.");
       error.statusCode = 400;
       throw error;
     }
 
-    if(!userDto.name && !userDto.phoneNumber && !userDto.regionId){
-      const error = new Error('이름, 번호, 지역에서 수정해 주세요.');
+    if (!userDto.name && !userDto.phoneNumber && !userDto.regionId) {
+      const error = new Error("이름, 번호, 지역에서 수정해 주세요.");
       error.statusCode = 400;
       throw error;
     }
-      
+
     await userService.updateUserService(userDto);
-  
-    return res.status(200).json({message: "정보 수정 성공"});
-  }
-  catch (err) {
+
+    return res.status(200).json({ message: "정보 수정 성공" });
+  } catch (err) {
     console.log(err);
     res.status(err.statusCode || 500).json({ error: err.message });
   }
