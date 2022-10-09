@@ -19,7 +19,7 @@ const getUserAccount = async (account) => {
   return user;
 };
 
-const updateName = async(userDao) => {
+const updateName = async (userDao) => {
   await myDataSource.query(
     `
     UPDATE users
@@ -29,7 +29,7 @@ const updateName = async(userDao) => {
   );
 };
 
-const updatePhoneNumber = async(userDao) => {
+const updatePhoneNumber = async (userDao) => {
   await myDataSource.query(
     `
     UPDATE users
@@ -39,7 +39,7 @@ const updatePhoneNumber = async(userDao) => {
   );
 };
 
-const updateRegion = async(userDao) => {
+const updateRegion = async (userDao) => {
   await myDataSource.query(
     `
     UPDATE users
@@ -57,6 +57,13 @@ const maxRegion = async () => {
     `
   );
   return row;
-}
+};
 
-module.exports = { createUser, getUserAccount, updateName, updatePhoneNumber, updateRegion, maxRegion };
+module.exports = {
+  createUser,
+  getUserAccount,
+  updateName,
+  updatePhoneNumber,
+  updateRegion,
+  maxRegion,
+};
