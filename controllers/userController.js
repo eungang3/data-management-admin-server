@@ -3,10 +3,10 @@ const userService = require("../services/userService");
 const createUser = async (req, res) => {
   const { name, account, password, phoneNumber, regionId, role } = req.body;
 
-  // if (!(name && account && password && phoneNumber && regionId && role)) {
-  //   res.status(400).json({ error: "필수 항목이 입력되지 않았습니다." });
-  //   return;
-  // }
+  if (!(name && account && password && phoneNumber && role)) {
+    res.status(400).json({ error: "필수 항목이 입력되지 않았습니다." });
+    return;
+  }
 
   try {
     await userService.createUser(name, account, password, phoneNumber, regionId, role);
