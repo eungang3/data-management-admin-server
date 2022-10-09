@@ -6,6 +6,9 @@ const morgan = require("morgan");
 const cors = require("cors");
 const errorHandler = require("./middlewares/errorHandler");
 const myDataSource = require("./models/db.config");
+//const { swaggerUi, specs } = require("./swagger/swagger");
+const swaggerUi = require("swagger-ui-express");
+const swaggerFile = require("./swagger/swagger-output.json");
 
 // DB 연결
 myDataSource
@@ -24,7 +27,7 @@ const createApp = () => {
   app.use(cors());
   app.use(router);
   app.use(errorHandler);
-
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile, { explorer: true }));
   return app;
 };
 
