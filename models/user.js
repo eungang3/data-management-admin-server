@@ -19,4 +19,44 @@ const getUserAccount = async (account) => {
   return user;
 };
 
-module.exports = { createUser, getUserAccount };
+const updateName = async(userDao) => {
+  await myDataSource.query(
+    `
+    UPDATE users
+    SET name = "${userDao.name}"
+    WHERE account = "${userDao.account}"
+    `
+  );
+};
+
+const updatePhoneNumber = async(userDao) => {
+  await myDataSource.query(
+    `
+    UPDATE users
+    SET phone_number = "${userDao.phoneNumber}"
+    WHERE account = "${userDao.account}"
+    `
+  );
+};
+
+const updateRegion = async(userDao) => {
+  await myDataSource.query(
+    `
+    UPDATE users
+    SET region_id = "${userDao.regionId}"
+    WHERE account = "${userDao.account}"
+    `
+  );
+};
+
+const maxRegion = async () => {
+  const [row] = await myDataSource.query(
+    `
+    SELECT MAX(id) as max
+    FROM regions
+    `
+  );
+  return row;
+}
+
+module.exports = { createUser, getUserAccount, updateName, updatePhoneNumber, updateRegion, maxRegion };

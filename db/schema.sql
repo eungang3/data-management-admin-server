@@ -18,14 +18,14 @@
 CREATE TABLE `centers` (
   `id` int NOT NULL AUTO_INCREMENT,
   `region_id` int DEFAULT NULL,
-  `cnterNm` varchar(200) NOT NULL,
-  `cnterSe` varchar(200) NOT NULL,
-  `doctrCo` varchar(200) NOT NULL,
-  `nurseCo` varchar(200) NOT NULL,
-  `scrcsCo` varchar(200) NOT NULL,
-  `rprsntvNm` varchar(200) NOT NULL,
-  `operPhoneNumber` varchar(200) NOT NULL,
-  `lnmadr` varchar(200) NOT NULL,
+  `cnterNm` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `cnterSe` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `doctrCo` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `nurseCo` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `scrcsCo` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `rprsntvNm` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `operPhoneNumber` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `lnmadr` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `region_id` (`region_id`),
   CONSTRAINT `centers_ibfk_1` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`)
@@ -40,9 +40,9 @@ CREATE TABLE `centers` (
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `regions` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
+  `name` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,19 +65,19 @@ CREATE TABLE `schema_migrations` (
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  `account` varchar(200) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `phone_number` varchar(200) NOT NULL,
+  `name` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `account` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phone_number` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   `region_id` int DEFAULT NULL,
-  `role` varchar(200) DEFAULT NULL,
+  `role` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`),
   KEY `region_id` (`region_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
