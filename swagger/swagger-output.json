@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Admin용 데이터 관리 프로그램",
-    "description": "JUSTCODE-6기-(BE)3팀 API documentation",
+    "description": "(BE)3팀 API documentation",
     "version": "1.0.0"
   },
   "servers": [
@@ -52,32 +52,37 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "token": {
-                    "example": "any"
-                  },
                   "치매센터명": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   },
                   "치매센터유형": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   },
                   "의사인원수": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "integer"
                   },
                   "간호사인원수": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "integer"
                   },
                   "사회복지사인원수": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "integer"
                   },
                   "운영기관대표자명": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   },
                   "운영기관전화번호": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   },
                   "소재지지번주소": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   }
                 }
               }
@@ -111,9 +116,18 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "description": "region_id의 경우 지역 담당자만 입력할 수 있습니다.",
                   "properties": {
-                    "message": {
-                      "example": "회원가입 성공"
+                    "data": {
+                      "example": [
+                        {
+                          "id": 1,
+                          "account": "test1",
+                          "phone_number": "010-0000-0001",
+                          "role": "지역",
+                          "region_id": 1
+                        }
+                      ]
                     }
                   }
                 }
@@ -125,25 +139,36 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
                 "properties": {
                   "name": {
-                    "example": "김코딩"
+                    "example": "김코딩",
+                    "type": "string",
+                    "description": "유저 이름"
                   },
                   "account": {
-                    "example": "test1"
+                    "example": "test1",
+                    "type": "string",
+                    "description": "유저 아이디"
                   },
                   "password": {
-                    "example": "Password1"
+                    "example": "Password1",
+                    "type": "string",
+                    "description": "유저 비밀번호"
                   },
                   "phoneNumber": {
-                    "example": "010-0000-0001"
+                    "example": "010-0000-0001",
+                    "type": "string",
+                    "description": "유저 휴대폰번호"
                   },
                   "regionId": {
-                    "example": 1
+                    "example": 1,
+                    "type": "integer",
+                    "description": "지역ID, 지역 담당자일 경우만 입력"
                   },
                   "role": {
-                    "example": "대표"
+                    "example": "대표",
+                    "type": "string",
+                    "description": "대표 OR 지역"
                   }
                 }
               }
@@ -156,8 +181,16 @@
       "get": {
         "tags": ["USER"],
         "summary": "회원가입시 아이디 중복체크",
-        "description": "body로 account를 받은 뒤 사용중인 아이디가 있는지 검사합니다.",
-        "parameters": [],
+        "description": "query로 account를 받은 뒤 사용중인 아이디가 있는지 검사합니다.",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -192,20 +225,6 @@
           "500": {
             "description": "Internal Server Error"
           }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "account": {
-                    "example": "test1"
-                  }
-                }
-              }
-            }
-          }
         }
       }
     },
@@ -239,10 +258,14 @@
                 "type": "object",
                 "properties": {
                   "account": {
-                    "example": "test1"
+                    "example": "test1",
+                    "type": "string",
+                    "description": "유저 아이디"
                   },
                   "password": {
-                    "example": "password1"
+                    "example": "password1",
+                    "type": "string",
+                    "description": "유저 비밀번호"
                   }
                 }
               }
@@ -311,6 +334,7 @@
           {
             "name": "cnterNm",
             "in": "query",
+            "value": "센터명",
             "schema": {
               "type": "string"
             }
@@ -318,6 +342,7 @@
           {
             "name": "cnterSe",
             "in": "query",
+            "value": "센터유형",
             "schema": {
               "type": "string"
             }
@@ -325,27 +350,31 @@
           {
             "name": "doctrCo",
             "in": "query",
+            "value": "의사 인원수",
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           },
           {
             "name": "nurseCo",
             "in": "query",
+            "value": "간호사 인원수",
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           },
           {
             "name": "scrcsCo",
             "in": "query",
+            "value": "사회복지사 인원수",
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           },
           {
             "name": "rprsntvNm",
             "in": "query",
+            "value": "운영기관 대표자명",
             "schema": {
               "type": "string"
             }
@@ -353,6 +382,7 @@
           {
             "name": "operPhoneNumber",
             "in": "query",
+            "value": "운영기관 전화번호",
             "schema": {
               "type": "string"
             }
