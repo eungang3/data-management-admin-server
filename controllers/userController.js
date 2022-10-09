@@ -9,8 +9,8 @@ const createUser = async (req, res) => {
   }
 
   try {
-    await userService.createUser(name, account, password, phoneNumber, regionId, role);
-    res.status(201).json({ message: "회원가입 성공" });
+    const user = await userService.createUser(name, account, password, phoneNumber, regionId, role);
+    res.status(201).json({ data: user });
   } catch (err) {
     console.log(err);
     res.status(err.statusCode || 500).json({ error: err.message });
@@ -18,7 +18,7 @@ const createUser = async (req, res) => {
 };
 
 const checkAccount = async (req, res) => {
-  const { account } = req.body;
+  const { account } = req.query;
 
   if (!account) {
     res.status(400).json({ error: "아이디를 입력해 주세요." });
