@@ -53,28 +53,36 @@
                 "type": "object",
                 "properties": {
                   "치매센터명": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   },
                   "치매센터유형": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   },
                   "의사인원수": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "integer"
                   },
                   "간호사인원수": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "integer"
                   },
                   "사회복지사인원수": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "integer"
                   },
                   "운영기관대표자명": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   },
                   "운영기관전화번호": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   },
                   "소재지지번주소": {
-                    "example": "any"
+                    "example": "any",
+                    "type": "string"
                   }
                 }
               }
@@ -108,6 +116,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "description": "region_id의 경우 지역 담당자만 입력할 수 있습니다.",
                   "properties": {
                     "data": {
                       "example": [
@@ -249,10 +258,14 @@
                 "type": "object",
                 "properties": {
                   "account": {
-                    "example": "test1"
+                    "example": "test1",
+                    "type": "string",
+                    "description": "유저 아이디"
                   },
                   "password": {
-                    "example": "password1"
+                    "example": "password1",
+                    "type": "string",
+                    "description": "유저 비밀번호"
                   }
                 }
               }
