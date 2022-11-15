@@ -60,7 +60,7 @@
 
 ## 📌 DB Modeling
 
-**[🔗 dbdiagram](https://dbdiagram.io/d/633bdd28f0018a1c5f8b3033)**
+**[🔗 dbdiagram]([https://dbdiagram.io/d/633bdd28f0018a1c5f8b3033](https://dbdiagram.io/d/6373ba25c9abfc611172dbc4))**
 
 <br>
 
