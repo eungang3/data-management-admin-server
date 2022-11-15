@@ -36,7 +36,6 @@ const checkAccount = async (req, res) => {
 
 const login = async (req, res) => {
   const { account, password } = req.body;
-  console.log(req.body);
 
   if (!account) {
     const error = new Error("아이디를 입력해 주세요.");
